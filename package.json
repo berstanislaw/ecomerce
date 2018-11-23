@@ -1,0 +1,10 @@
+{
+  "name": "ecomerce",
+  "version": "1.0.0",
+  "description": "Simple ecomerce project with elasticsearch",
+  "main": "index.js",
+  "repository": "git@github.com:brenado/ecomerce.git",
+  "author": "Bernardo Estanislau <brenado7@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
