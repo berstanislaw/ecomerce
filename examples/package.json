@@ -6,5 +6,10 @@
   "repository": "git@github.com:brenado/ecomerce.git",
   "author": "Bernardo Estanislau <brenado7@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "elasticsearch": "^15.2.0",
+    "express": "^4.16.4"
+  }
 }
