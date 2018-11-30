@@ -1,4 +1,4 @@
-let client = require('./server')
+let client = require('../server')
 
 client.indices.getMapping(
   {
