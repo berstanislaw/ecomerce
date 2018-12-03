@@ -23,10 +23,35 @@ app.post('/client', (request, response) => {
 
 app.use(bodyParser.json())
 app.post('/cadastrarUsuario', (request, response) => {
-  const { name, lastName, cpf, birthDate, phones } = request.body
-  
-})
+  const { index, id, type, name, lastName, cpf, birthDate, phones } = request.body
+  client.index(
+    {
+      index,
+      id,
+      type,
+      body: {
+        name,
+        lastName,
+        cpf,
+        birthDate,
+        phones,
+      },
+    },
+    (error, response) => (error ? console.error(error) : console.log(response)),
+  )
 
+  response.send({
+    message: 'Data insert',
+    index,
+    id,
+    type,
+    name,
+    lastName,
+    cpf,
+    birthDate,
+    phones,
+  })
+})
 
 app.listen(3000, () => {
   console.log('Servidor inciado na porta 3000')
