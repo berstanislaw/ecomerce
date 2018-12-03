@@ -23,7 +23,8 @@ app.post('/client', (request, response) => {
 
 app.use(bodyParser.json())
 app.post('/cadastrarUsuario', (request, response) => {
-  const { name, email, password } = request.body
+  const { name, lastName, cpf, birthDate, phones } = request.body
+  
 })
 
 
