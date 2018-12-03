@@ -1,0 +1,34 @@
+Client Insert
+
+{
+	"id": 2,
+	"name": "testaaaa",
+	"lastName": "teste",
+	"cpf": "279.672.787-47",
+	"birthDate": "1972-11-30",
+	"phones": [ 
+		{
+			"type": "teste", 
+			"number": "testes"
+		},
+		{
+			"type" : "teste",
+			"number": "123456"
+		}
+	]
+}
+
+Product Insert
+
+{
+    "id": 1,
+    "name": "testaaaa",
+    "description": "teste",
+    "cost": 12345678,
+    "category": "testes",
+    "images": [
+        {
+            "url": "https://a-static.mlcdn.com.br/618x463/panela-de-pressao-nigro-press-097019-aluminio-45l-vermelha/magazineluiza/144307100/bc44cefcc427cf239c2b6376cbed251f.jpg"
+        }
+    ]
+}

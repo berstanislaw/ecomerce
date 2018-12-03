@@ -8,27 +8,43 @@ let client = new elasticsearch.Client({
 })
 
 app.use(bodyParser.json())
-app.post('/client', (request, response) => {
-  const { name, lastName, cpf, birthDate, cellphoneNumber } = request.body
+app.post('/cadastrarProduto', (request, response) => {
+  const { id, name, description, cost, category, images } = request.body
+  client.index(
+    {
+      index: 'product',
+      id,
+      type: '_doc',
+      body: {
+        name,
+        description,
+        cost,
+        category,
+        images,
+      },
+    },
+    (error, response) => (error ? console.error(error) : console.log(response)),
+  )
 
   response.send({
-    message: 'Foi inserido...',
+    message: 'Data insert',
+    id,
     name,
-    lastName,
-    cpf,
-    birthDate,
-    cellphoneNumber,
+    description,
+    cost,
+    category,
+    images,
   })
 })
 
 app.use(bodyParser.json())
 app.post('/cadastrarUsuario', (request, response) => {
-  const { index, id, type, name, lastName, cpf, birthDate, phones } = request.body
+  const { id, name, lastName, cpf, birthDate, phones } = request.body
   client.index(
     {
-      index,
+      index: 'client',
       id,
-      type,
+      type: 'normalClient',
       body: {
         name,
         lastName,
@@ -42,7 +58,6 @@ app.post('/cadastrarUsuario', (request, response) => {
 
   response.send({
     message: 'Data insert',
-    index,
     id,
     type,
     name,
