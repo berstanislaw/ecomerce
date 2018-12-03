@@ -21,6 +21,12 @@ app.post('/client', (request, response) => {
   })
 })
 
+app.use(bodyParser.json())
+app.post('/cadastrarUsuario', (request, response) => {
+  const { name, email, password } = request.body
+})
+
+
 app.listen(3000, () => {
   console.log('Servidor inciado na porta 3000')
 })
