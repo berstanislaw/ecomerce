@@ -1,8 +1,34 @@
-const { app } = require('../../server')
 const { client } = require('../../utils')
+const express = require('express')
+const router = express.Router()
 
+router.post('/', (request, response) => {
+  const { id, name, lastName, cpf, birthDate, phones } = request.body
+  client.index({
+    index: 'client',
+    id,
+    type: '_doc',
+    body: {
+      name,
+      lastName,
+      cpf,
+      birthDate,
+      phones,
+    },
+  })
 
-app.get('/client/q?', (request, response) => {
+  response.send({
+    message: 'Data insert',
+    id,
+    name,
+    lastName,
+    cpf,
+    birthDate,
+    phones,
+  })
+})
+
+router.get('/', (request, response) => {
   const { path, search } = request.query
 
   client.search(
@@ -42,3 +68,5 @@ app.get('/client/q?', (request, response) => {
     },
   )
 })
+
+module.exports = router
