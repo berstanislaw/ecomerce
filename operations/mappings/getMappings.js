@@ -17,3 +17,12 @@ client.indices.getMapping(
   (error, response) =>
     error ? console.error(error.message) : console.log('Mappings:\n', response.products.mappings._doc.properties),
 )
+
+client.indices.getMapping(
+  {
+    index: 'sales',
+    type: '_doc',
+  },
+  (error, response) =>
+    error ? console.error(error.message) : console.log('Mappings:\n', response.sales.mappings._doc.properties),
+)

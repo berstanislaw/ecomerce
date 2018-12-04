@@ -65,3 +65,35 @@ client.indices.putMapping(
   },
   (error, response) => (error ? console.error(error) : console.log(response)),
 )
+
+client.indices.putMapping(
+  {
+    index: 'sales',
+    type: '_doc',
+    body: {
+      properties: {
+        idClient: {
+          type: 'text',
+          index: true,
+        },
+        idProduct: {
+          type: 'text',
+          index: true,
+        },
+        totalValue: {
+          type: 'double',
+          index: true,
+        },
+        purchaseDate: {
+          type: 'date',
+          index: true,
+        },
+        quantity: {
+          type: 'integer',
+          index: true,
+        },
+      },
+    },
+  },
+  (error, response) => (error ? console.error(error) : console.log(response)),
+)

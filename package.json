@@ -3,6 +3,7 @@
     "chunk": "^0.0.2",
     "elasticsearch": "^15.2.0",
     "express": "^4.16.4",
-    "fs-extra": "^7.0.1"
+    "fs-extra": "^7.0.1",
+    "uuid": "^3.3.2"
   }
 }
