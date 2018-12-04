@@ -4,18 +4,21 @@ const router = express.Router()
 
 router.post('/', (request, response) => {
   const { id, name, description, cost, category, images } = request.body
-  client.index({
-    index: 'products',
-    id,
-    type: '_doc',
-    body: {
-      name,
-      description,
-      cost,
-      category,
-      images,
+  client.index(
+    {
+      index: 'products',
+      id,
+      type: '_doc',
+      body: {
+        name,
+        description,
+        cost,
+        category,
+        images,
+      },
     },
-  })
+    (error, response) => (error ? console.error(error) : console.log(response)),
+  )
 
   response.send({
     message: 'Data insert',
