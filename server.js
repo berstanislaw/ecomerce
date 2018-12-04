@@ -1,14 +1,13 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const elasticsearch = require('elasticsearch')
+const products = require('./operations/products/product')
 
-const client = new elasticsearch.Client({
-  hosts: ['http://localhost:9200/'],
-})
+app.use(bodyParser.json())
+app.use('/product', products)
 
 app.listen(3000, () => {
   console.log('Servidor inciado na porta 3000')
 })
 
-module.exports = { client, app, bodyParser }
+module.exports = { app, bodyParser }

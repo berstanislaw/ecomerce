@@ -1,4 +1,4 @@
-const { client } = require('../../server')
+const { client } = require('../../utils')
 
 client.indices.create({ index: 'client' }, (error, response) => (error ? console.error(error) : console.log(response)))
 client.indices.create(

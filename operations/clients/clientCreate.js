@@ -1,4 +1,5 @@
-const { client, app, bodyParser } = require('../../server')
+const { app, bodyParser } = require('../../server')
+const { client } = require('../../utils')
 
 app.use(bodyParser.json())
 app.post('/user', (request, response) => {

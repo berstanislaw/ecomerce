@@ -1,4 +1,4 @@
-const { client } = require('../../server')
+const { client } = require('../../utils')
 
 client.indices.putMapping(
   {
