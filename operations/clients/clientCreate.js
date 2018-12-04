@@ -1,26 +1,28 @@
-let client = require('../../server')
+const { client, app, bodyParser } = require('../../server')
 
-client.index(
-  {
+app.use(bodyParser.json())
+app.post('/user', (request, response) => {
+  const { id, name, lastName, cpf, birthDate, phones } = request.body
+  client.index({
     index: 'client',
-    id: '1',
-    type: 'normalClient',
+    id,
+    type: '_doc',
     body: {
-      name: 'Erin',
-      lastName: 'M Hickey',
-      cpf: '297.551.751-30',
-      birthDate: '1972-11-30',
-      phones: [
-        {
-          type: 'home',
-          number: '925-642-2807',
-        },
-        {
-          type: 'mobile',
-          number: '510-393-4602',
-        },
-      ],
+      name,
+      lastName,
+      cpf,
+      birthDate,
+      phones,
     },
-  },
-  (error, response) => (error ? console.error(error) : console.log(response)),
-)
+  })
+
+  response.send({
+    message: 'Data insert',
+    id,
+    name,
+    lastName,
+    cpf,
+    birthDate,
+    phones,
+  })
+})

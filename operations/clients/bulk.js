@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const chunk = require('chunk')
-let client = require('../../server')
+const { client } = require('../../server')
 
 async function example() {
   try {

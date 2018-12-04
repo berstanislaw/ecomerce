@@ -1,9 +1,9 @@
-let client = require('../../server')
+const { client } = require('../../server')
 
 client.indices.putMapping(
   {
     index: 'client',
-    type: 'normalClient',
+    type: '_doc',
     body: {
       properties: {
         name: {

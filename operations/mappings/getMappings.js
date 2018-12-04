@@ -1,12 +1,12 @@
-let client = require('../../server')
+const { client } = require('../../server')
 
 client.indices.getMapping(
   {
     index: 'client',
-    type: 'normalClient',
+    type: '_doc',
   },
   (error, response) =>
-    error ? console.error(error.message) : console.log('Mappings:\n', response.client.mappings.normalClient.properties),
+    error ? console.error(error.message) : console.log('Mappings:\n', response.client.mappings._doc.properties),
 )
 
 client.indices.getMapping(
