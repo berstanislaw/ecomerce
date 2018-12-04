@@ -10,7 +10,7 @@ router.post('/', (request, response) => {
 
   client.index(
     {
-      index: 'client',
+      index: 'sales',
       id,
       type: '_doc',
       body: {
@@ -29,10 +29,44 @@ router.post('/', (request, response) => {
     idClient,
     idProduct,
     totalValue,
-    cpf,
     purchaseDate,
     quantity,
   })
 })
 
+router.get(
+  '/',
+  (request,
+  response => {
+    const { search } = request.query
+
+    client.search(
+      {
+        index: 'sale',
+        size: 50,
+        body: {
+          query: {
+            regexp: { purchaseDate: `.*?+` },
+          },
+        },
+      },
+      function(error, elasticsearchResponse) {
+        if (error) {
+          console.log('search error: ' + error)
+        } else {
+          console.log('--- Response ---')
+          console.log(elasticsearchResponse)
+          console.log('--- Hits ---', elasticsearchResponse.hits.hits.length)
+          elasticsearchResponse.hits.hits.forEach(function(hit) {
+            console.log(JSON.stringify(hit, null, 2))
+          })
+          response.send({
+            results: elasticsearchResponse.hits.hits.length,
+            message: elasticsearchResponse.hits.hits,
+          })
+        }
+      },
+    )
+  }),
+)
 module.exports = router

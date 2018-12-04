@@ -32,3 +32,12 @@ Product Insert
         }
     ]
 }
+
+Sale Insert
+
+{
+    "id": 1,
+    "totalValue": 12345,
+    "purchaseDate": "2000-01-01",
+    "quantity": 7
+}
