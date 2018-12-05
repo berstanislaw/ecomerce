@@ -72,26 +72,7 @@ client.indices.putMapping(
     type: '_doc',
     body: {
       properties: {
-        idClient: {
-          type: 'text',
-          index: true,
-        },
-        idProduct: {
-          type: 'text',
-          index: true,
-        },
-        totalValue: {
-          type: 'double',
-          index: true,
-        },
-        purchaseDate: {
-          type: 'date',
-          index: true,
-        },
-        quantity: {
-          type: 'integer',
-          index: true,
-        },
+        
       },
     },
   },

@@ -34,39 +34,35 @@ router.post('/', (request, response) => {
   })
 })
 
-router.get(
-  '/',
-  (request,
-  response => {
-    const { search } = request.query
+router.get('/', (request, response) => {
+  const { search } = request.query
 
-    client.search(
-      {
-        index: 'sale',
-        size: 50,
-        body: {
-          query: {
-            regexp: { purchaseDate: `.*?+` },
-          },
+  client.search(
+    {
+      index: 'sale',
+      size: 50,
+      body: {
+        query: {
+          regexp: { idClient: `${search}.*?+` },
         },
       },
-      function(error, elasticsearchResponse) {
-        if (error) {
-          console.log('search error: ' + error)
-        } else {
-          console.log('--- Response ---')
-          console.log(elasticsearchResponse)
-          console.log('--- Hits ---', elasticsearchResponse.hits.hits.length)
-          elasticsearchResponse.hits.hits.forEach(function(hit) {
-            console.log(JSON.stringify(hit, null, 2))
-          })
-          response.send({
-            results: elasticsearchResponse.hits.hits.length,
-            message: elasticsearchResponse.hits.hits,
-          })
-        }
-      },
-    )
-  }),
-)
-module.exports = router
+    },
+    function(error, elasticsearchResponse) {
+      if (error) {
+        console.log('search error: ' + error)
+      } else {
+        console.log('--- Response ---')
+        console.log(elasticsearchResponse)
+        console.log('--- Hits ---', elasticsearchResponse.hits.hits.length)
+        elasticsearchResponse.hits.hits.forEach(function(hit) {
+          console.log(JSON.stringify(hit, null, 2))
+        })
+        response.send({
+          results: elasticsearchResponse.hits.hits.length,
+          message: elasticsearchResponse.hits.hits,
+        })
+      }
+    },
+  )
+}),
+  (module.exports = router)
